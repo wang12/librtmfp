@@ -1,6 +1,6 @@
 VERSION=0.1
 
-prefix=/usr
+prefix=.
 
 LIBDIR=$(prefix)/lib/
 ifeq ($(shell uname -m), x86_64)
@@ -29,8 +29,8 @@ CFLAGS+=-std=c++11 -Wall -Wno-reorder -Wno-terminate -Wno-unknown-pragmas -Wno-u
 ifeq ($(OS),FreeBSD)
 	CFLAGS+=-D_GLIBCXX_USE_C99
 endif
-override INCLUDES+=-I./include/
-LIBS+=-Wl,-Bdynamic -lcrypto -lssl -lpthread
+override INCLUDES+=-I./include/ -I/usr/local/opt/openssl/include
+LIBS+= -lcrypto -lssl -lpthread
 
 INCDIR=/usr/include/librtmfp/
 
